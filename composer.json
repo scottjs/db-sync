@@ -1,3 +1,6 @@
 {
-	"name": "scottjs/db-sync"
+	"name": "scottjs/db-sync",
+	"require-dev": {
+		"interconnectit/search-replace-db": "^3.1"
+	}
 }
