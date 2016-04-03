@@ -8,7 +8,7 @@ It also comes with a prepare database option that allows you to quickly run safe
 
 * Composer
 * PHP >= 5.3.0
-* Virtual machines or development environment, such as Vagrant.
+* A local development environment, such as Vagrant.
 
 ## Notes
 
