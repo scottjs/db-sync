@@ -13,7 +13,7 @@ It also comes with a prepare database option that allows you to quickly run safe
 ## Notes
 
 * These scripts require a .env config file in the project root folder. If you're using WordPress, you can use [scottjs/wp-dotenv](https://github.com/scottjs/wp-dotenv) to allow WordPress to share the same .env file and avoid maintaining two config files.
-* This script was originally designed with WordPress in mind, however it should work with other projects, such as Laravel 5.
+* This script was designed with WordPress in mind, however it should work with other projects, such as Laravel 5.
 
 ## Installation
 
