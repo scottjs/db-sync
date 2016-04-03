@@ -1,5 +1,7 @@
 # DB Sync
 
+These scripts and commands were originally created for use internally within our development team to provide convenient functions. However, they may be of some use to others. Feel free to use in your own projects, your mileage may vary.
+
 DB Sync provides helper scripts to quickly update a local MySQL development database with a remote staging or production database. It assumes that your remote database is externally accessable via an IP whitelist or similar.
 
 It also comes with a prepare database option that allows you to quickly run safe search/replace on your local database in preparation for deploying to a remote server.
