@@ -1,6 +1,6 @@
 # DB Sync
 
-When working on an active project, your local database may become too out of date from the database in staging or production.
+When working on an active project, your local database may become too out of date from the database in staging or production and make local development difficult or unreliable.
 
 DB Sync provides scripts to quickly update a local MySQL development database with a remote staging or production database, as well as the ability to run safe search/replace on your local database in preparation for deploying to a remote server. It assumes that your remote database is externally accessable via an IP whitelist or similar.
 
