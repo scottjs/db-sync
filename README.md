@@ -71,10 +71,10 @@ From the root of your project, you will be able to run the following composer co
 
 See below for an explanation of each configuration option used within the .env file.
 
-* ***DOMAIN_REMOTE*** - Required by ***composer database-prepare***, it should point to your remote or production environment (if available) and not include http:// or trailing slashes. Example: `www.example.com` or `subdomain.example.com`.
+* ***DOMAIN_REMOTE*** - It should point to your remote or production environment (if available) and not include http:// or trailing slashes. Example: `www.example.com` or `subdomain.example.com`.
 
-* ***DOMAIN_LOCAL*** - Required by ***composer database-prepare***, it should not include http:// or trailing slashses. Example: `www.example.local` or `subdomain.example.local`.
+* ***DOMAIN_LOCAL*** - It should not include http:// or trailing slashses. Example: `www.example.local` or `subdomain.example.local`.
 
-* ***DB_**** - Required by ***composer update-database*** and provides options to set the local database connection details.
+* ***DB_**** - Provides options to set the local database connection details.
 
-* ***REMOTE\_DB_**** - Required by ***composer update-database*** and provides options to set the remote staging or production database connection details.
+* ***REMOTE\_DB_**** - Provides options to set the remote staging or production database connection details.
