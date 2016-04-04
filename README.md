@@ -4,7 +4,7 @@ DB Sync provides helper scripts to quickly update a local MySQL development data
 
 It also comes with a prepare database option that allows you to quickly run safe search/replace on your local database in preparation for deploying to a remote server.
 
-*Disclaimer: These scripts and commands were originally created for use internally within our development team to speed up common repetitive tasks. However, they may be of some use to others. Feel free to use in your own projects, your mileage may vary.*
+*Disclaimer: These scripts and commands were originally created for use internally within our development team to speed up common, repetitive tasks. However, they may be of some use to others. Feel free to use in your own projects, your mileage may vary.*
 
 ## Requirements
 
