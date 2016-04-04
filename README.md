@@ -1,6 +1,6 @@
 # DB Sync
 
-DB Sync provides helper scripts to quickly update a local MySQL development database with a remote staging or production database. It assumes that your remote database is externally accessable via an IP whitelist or similar.
+DB Sync provides scripts to quickly update a local MySQL development database with a remote staging or production database. It assumes that your remote database is externally accessable via an IP whitelist or similar.
 
 It also comes with a prepare database option that allows you to quickly run safe search/replace on your local database in preparation for deploying to a remote server.
 
@@ -67,7 +67,7 @@ From the root of your project, you will be able to run the following composer co
 
 * ***composer database-prepare*** - When developing locally, links to images and assets created within a CMS might be referencing your local development web address and won't work in staging or production. This command will run a safe search/replace script on your locally configured database, replacing all instances of `DOMAIN_LOCAL` with `DOMAIN_REMOTE` configured in the .env file. The database will then be exported to `dumps/prepared-database-YYYY.MM.DD-HH.MM.SS.sql` ready for deployment.
 
-## Configuration Options
+## Config
 
 See below for an explanation of each configuration option used within the .env file.
 
