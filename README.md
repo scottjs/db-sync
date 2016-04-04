@@ -1,8 +1,8 @@
 # DB Sync
 
-DB Sync provides scripts to quickly update a local MySQL development database with a remote staging or production database. It assumes that your remote database is externally accessable via an IP whitelist or similar.
+When working on an active project, your local database may become too out of date from the database in staging or production.
 
-It also comes with a prepare database option that allows you to quickly run safe search/replace on your local database in preparation for deploying to a remote server.
+DB Sync provides scripts to quickly update a local MySQL development database with a remote staging or production database, as well as the ability to run safe search/replace on your local database in preparation for deploying to a remote server. It assumes that your remote database is externally accessable via an IP whitelist or similar.
 
 *Disclaimer: These scripts and commands were originally created for use internally within our development team to speed up common, repetitive tasks. However, they may be of some use to others. Feel free to use in your own projects, your mileage may vary.*
 
@@ -63,7 +63,7 @@ REMOTE_DB_PASSWORD=password
 
 From the root of your project, you will be able to run the following composer commands:
 
-* ***composer database-update*** - When working on an active project, your local database might be too out of date from the database in staging or production. This command will backup and empty your locally configured database and update it with a copy of your remote or production database. This requires all `DB_*` and `REMOTE_DB_*` options to be set in the .env file and also assumes your remote database is accessible externally.
+* ***composer database-update*** - When working on an active project, your local database might become too out of date from the database in staging or production. This command will backup and empty your locally configured database and update it with a copy of your remote or production database. This requires all `DB_*` and `REMOTE_DB_*` options to be set in the .env file and also assumes your remote database is accessible externally.
 
 * ***composer database-prepare*** - When developing locally, links to images and assets created within a CMS might be referencing your local development web address and won't work in staging or production. This command will run a safe search/replace script on your locally configured database, replacing all instances of `DOMAIN_LOCAL` with `DOMAIN_REMOTE` configured in the .env file. The database will then be exported to `dumps/prepared-database-YYYY.MM.DD-HH.MM.SS.sql` ready for deployment.
 
