@@ -36,6 +36,12 @@ Then add the following scripts to your `composer.json` file:
 	],
 	"database-prepare" : [
 		"vendor/scottjs/db-sync/database-prepare.sh"
+	],
+	"database-import" : [
+		"vendor/scottjs/db-sync/database-import.sh"
+	],
+	"database-export" : [
+		"vendor/scottjs/db-sync/database-export.sh"
 	]
 }
 ```
