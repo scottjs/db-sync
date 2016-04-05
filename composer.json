@@ -17,6 +17,12 @@
 		],
 		"database-prepare" : [
 			"vendor/scottjs/db-sync/database-prepare.sh"
+		],
+		"database-import" : [
+			"vendor/scottjs/db-sync/database-import.sh"
+		],
+		"database-export" : [
+			"vendor/scottjs/db-sync/database-export.sh"
 		]
 	},
 	"minimum-stability": "dev"
