@@ -67,6 +67,10 @@ From the root of your project, you will be able to run the following composer co
 
 * ***composer database-prepare*** - When developing locally, links to images and assets created within a CMS might be referencing your local development web address and won't work in staging or production. This command will run a safe search/replace script on your locally configured database, replacing all instances of `DOMAIN_LOCAL` with `DOMAIN_REMOTE` configured in the .env file. The database will then be exported to `dumps/prepared-database-YYYY.MM.DD-HH.MM.SS.sql` ready for deployment.
 
+* ***composer database-import*** - If the file `setup/database.sql` exists in the project root, this command will import the file into your local database configured in the .env file. This is useful if you're working on a project and want another member of the team to get quickly set up with working copy of the database. 
+
+* ***composer database-export*** - This command will export a copy of your local database configured in the .env file and save it to `setup/database.sql`. If this file exists it will be overwritten. This is useful to quickly take a snapshot of your current development database to be shared with others.
+
 ## Config
 
 See below for an explanation of each configuration option used within the .env file.
