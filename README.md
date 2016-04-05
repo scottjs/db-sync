@@ -19,11 +19,11 @@ DB Sync provides scripts to quickly update a local MySQL development database wi
 
 ## Installation
 
-Add `"scottjs/db-sync": "0.*"` to your `composer.json` file:
+Add `"scottjs/db-sync": "1.*"` to your `composer.json` file:
 
 ```
 "require-dev": {
-	"scottjs/db-sync": "0.*"
+	"scottjs/db-sync": "1.*"
 },
 ```
 
@@ -77,7 +77,7 @@ See below for an explanation of each configuration option used within the .env f
 
 * ***DOMAIN_REMOTE*** - It should point to your remote or production environment (if available) and not include http:// or trailing slashes. Example: `www.example.com` or `subdomain.example.com`.
 
-* ***DOMAIN_LOCAL*** - It should not include http:// or trailing slashses. Example: `www.example.local` or `subdomain.example.local`.
+* ***DOMAIN_LOCAL*** - It should not include http:// or trailing slashes. Example: `www.example.local` or `subdomain.example.local`.
 
 * ***DB_**** - Provides options to set the local database connection details.
 
