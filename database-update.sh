@@ -48,15 +48,17 @@ mysqladmin -h $LOCAL_DATABASE_HOST -u $LOCAL_DATABASE_USER -p$LOCAL_DATABASE_PAS
 if mysql -h $LOCAL_DATABASE_HOST -u $LOCAL_DATABASE_USER -p$LOCAL_DATABASE_PASS -e 'use '"$LOCAL_DATABASE_NAME" && mysql -h $REMOTE_DATABASE_HOST -u $REMOTE_DATABASE_USER -p$REMOTE_DATABASE_PASS -e 'use '"$REMOTE_DATABASE_NAME"; then
 
 	# Download database dump
-	echo Downloading database from remote: $REMOTE_DATABASE_HOST
+	echo Exporting database \'$REMOTE_DATABASE_NAME\' from remote server: $REMOTE_DATABASE_HOST
 	mysqldump -v -h $REMOTE_DATABASE_HOST -u $REMOTE_DATABASE_USER -p$REMOTE_DATABASE_PASS $REMOTE_DATABASE_NAME > $CONFIG/dumps/remote-database-$CURRENT_TIME.sql
 
+	echo Remote database exported: remote-database-$CURRENT_TIME.sql
+
 	# Upload dump to local database
-	echo Uploading database to local: $LOCAL_DATABASE_HOST
+	echo Importing database \'remote-database-$CURRENT_TIME.sql\' to local server: $LOCAL_DATABASE_HOST
 	mysql -h $LOCAL_DATABASE_HOST -u $LOCAL_DATABASE_USER -p$LOCAL_DATABASE_PASS $LOCAL_DATABASE_NAME < $CONFIG/dumps/remote-database-$CURRENT_TIME.sql
 
-	echo COMPLETE: Database update complete
+	echo COMPLETE: Database update complete: $LOCAL_DATABASE_NAME
 
 else
-	echo ERROR: Could not connect to the database
+	echo ERROR: Could not connect to the local or remote database
 fi

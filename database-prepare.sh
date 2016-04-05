@@ -27,18 +27,28 @@ CURRENT_TIME=$(date "+%Y.%m.%d-%H.%M.%S")
 # Create directory to store dumps
 mkdir -p $CONFIG/dumps
 
-echo Backing up local database: $LOCAL_DATABASE_NAME
-mysqldump -v -h $LOCAL_DATABASE_HOST -u $LOCAL_DATABASE_USER -p$LOCAL_DATABASE_PASS $LOCAL_DATABASE_NAME > $CONFIG/dumps/local-database-$CURRENT_TIME.sql
+# Check for database connections
+if mysql -h $LOCAL_DATABASE_HOST -u $LOCAL_DATABASE_USER -p$LOCAL_DATABASE_PASS -e 'use '"$LOCAL_DATABASE_NAME"; then
 
-if [ -f vendor/interconnectit/search-replace-db/srdb.cli.php ]; then
+	echo Backing up local database \'$LOCAL_DATABASE_NAME\': $LOCAL_DATABASE_HOST
+	mysqldump -v -h $LOCAL_DATABASE_HOST -u $LOCAL_DATABASE_USER -p$LOCAL_DATABASE_PASS $LOCAL_DATABASE_NAME > $CONFIG/dumps/local-database-$CURRENT_TIME.sql
 
-    # Run find/replace script
-    php vendor/interconnectit/search-replace-db/srdb.cli.php -h $LOCAL_DATABASE_HOST -n $LOCAL_DATABASE_NAME -u $LOCAL_DATABASE_USER -p $LOCAL_DATABASE_PASS -s "$DOMAIN_LOCAL" -r "$DOMAIN_REMOTE"
+	if [ -f vendor/interconnectit/search-replace-db/srdb.cli.php ]; then
 
-	echo Downloading prepared database: $LOCAL_DATABASE_NAME
-	mysqldump -v -h $LOCAL_DATABASE_HOST -u $LOCAL_DATABASE_USER -p$LOCAL_DATABASE_PASS $LOCAL_DATABASE_NAME > $CONFIG/dumps/prepared-database-$CURRENT_TIME.sql
+		echo Running search and replace: $LOCAL_DATABASE_NAME
 
-	echo COMPLETE: Replaced \'$DOMAIN_LOCAL\' with \'$DOMAIN_REMOTE\': prepared-database-$CURRENT_TIME.sql
+		# Run find/replace script
+		php vendor/interconnectit/search-replace-db/srdb.cli.php -h $LOCAL_DATABASE_HOST -n $LOCAL_DATABASE_NAME -u $LOCAL_DATABASE_USER -p $LOCAL_DATABASE_PASS -s "$DOMAIN_LOCAL" -r "$DOMAIN_REMOTE"
+		echo Search and replace complete: $LOCAL_DATABASE_NAME
+
+		echo Exporting prepared database: $LOCAL_DATABASE_NAME
+
+		mysqldump -v -h $LOCAL_DATABASE_HOST -u $LOCAL_DATABASE_USER -p$LOCAL_DATABASE_PASS $LOCAL_DATABASE_NAME > $CONFIG/dumps/prepared-database-$CURRENT_TIME.sql
+		echo COMPLETE: Database exported and replaced \'$DOMAIN_LOCAL\' with \'$DOMAIN_REMOTE\': prepared-database-$CURRENT_TIME.sql
+	else
+		echo ERROR: Script not found: vendor/interconnectit/search-replace-db/srdb.cli.php
+	fi
+
 else
-	echo ERROR: Script not found: vendor/interconnectit/search-replace-db/srdb.cli.php
+	echo ERROR: Could not connect to the database: $LOCAL_DATABASE_NAME
 fi
