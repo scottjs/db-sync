@@ -19,12 +19,12 @@ DB Sync provides scripts to quickly update a local MySQL development database wi
 
 ## Installation
 
-Add `"scottjs/db-sync": "1.*"` to your `composer.json` file:
+Run `composer require "scottjs/db-sync:1.*"` from the root of your project, or manually add `"scottjs/db-sync": "1.*"` to your `composer.json` file:
 
 ```
 "require-dev": {
 	"scottjs/db-sync": "1.*"
-},
+}
 ```
 
 Then add the following scripts to your `composer.json` file:
