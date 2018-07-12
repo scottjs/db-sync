@@ -10,7 +10,7 @@ done
 
 DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
 
-CONFIG=${DIR%/*/*/*}
+CONFIG=$PWD
 
 # Import config settings
 source "$CONFIG/.env"
